@@ -1,8 +1,8 @@
 REFERENCE: https://confluence-dc.paloaltonetworks.com/pages/viewpage.action?pageId=295188409
 # Strata Playbook: AIRS (AI Runtime Security) - Playbook Hub - Confluence Datacenter
 
-
 ## Troubleshooting
+
 For troubleshooting AI Runtime Security, check the following scenarios:
 	### Deployment & Terraform Playbook: 
 	For issues with Terraform deployments, check the AIRS (AI Runtime Security) Terraform Support playbook. 
