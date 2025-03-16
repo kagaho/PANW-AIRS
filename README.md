@@ -32,64 +32,124 @@ admin@PA-VM> request license info
 ```
 Look for "Feature: AI-Runtime-Security"
 
-### Status and Policy configuration in SCM: 
-Confirm the device is shown in SCM as type "AI Firewalls" and device status is connected and config is "in sync". Verify Security Profile is created. Confirm Profile is used in Profile Group. Verify Security Policy has Profile Group Selected. Successful push notification.
+## 🔄 Status & Policy Configuration in SCM
 
-### Cloud Connectivity: 
-Is filemanager connected? Confirm cloud is connected, confirm if certificate is valid and State is ready. For these, check CLI command: 
-``` 
-	admin@PA-VM> show ctd-agent status security-client
+Ensure the following:
+
+- ✅ The device appears in **SCM** as **AI Firewalls**  
+- ✅ Device **status** is **Connected**  
+- ✅ Configuration is **in sync**  
+- ✅ **Security Profile** is created  
+- ✅ **Profile Group** contains the Security Profile  
+- ✅ **Security Policy** has the Profile Group selected  
+- ✅ **Push notification** is successful  
+
+---
+
+## ☁️ Cloud Connectivity
+
+Check cloud connectivity by verifying:
+
+- **FileManager** is connected  
+- **Cloud Connection** is established  
+- **Certificate** is valid  
+- **State** is set to **Ready**  
+
+Run the following CLI command:
+
+```
+admin@PA-VM> show ctd-agent status security-client
 ```
 
-### Logging: 
-Logs should appear in the "AI runtime security" tab. AI Security log type is only visible under the correct selection "Firewall/AI Security". These logs will not be present on the local webui (GUI Dashboard). If no logs are seen, check below counters with this CLI command: 
-``` 
-	admin@PA-VM> show counter global | match log
+## 📜 Logging
+
+Logs should appear under:
+
+- **AI Runtime Security** tab  
+- **Firewall/AI Security** selection  
+
+📌 **Note:** These logs **will not** appear in the **local WebUI (GUI Dashboard)**.
+
+If logs are missing, check global counters:
 ```
-(To check if dp sent the ai sec logs.). counter are log_ai_sec_cnt and log_ai_sec_log. 
-Also the CLI command: 
+admin@PA-VM> show counter global | match log
+```
+Check for these counters:
+
+- `log_ai_sec_cnt` – AI security log count  
+- `log_ai_sec_log` – AI security logs sent  
+
+Also, verify log reception with the CLI command: 
 ``` 
-	admin@PA-VM> debug log-receiver statistics
+admin@PA-VM> debug log-receiver statistics
 ```
 (To check if mp received the ai sec logs correctly or not.)
 
-### Forwarding Errors: 
-Confirm platform type & License(Only licensed AI-NGFW support AI SEC); Verify Policy(Has Ai Security Profile been configured?; Is it attached to security policy matching traffic?); Check filemgr connection and counters(fctrl not ready counter); Is Wifclient connected?; Is content up to date? Is the session for the AI traffic traversing the device in question? We can check the status of the wif counters with the CLI command: 
-``` 
-	admin@PA-VM> show counter global filter delta yes
-```
-and check for the following counters: 
-**ctd_ai_wif_forward_count**(total ai requests forwarded for WIF), 
-**ctd_ai_wif_forward_count_http**(total ai requests forwarded for WIF for http), 
-**ctd_ai_wif_forward_count_http2**(total ai requests forwarded for WIF for http2), 
-**ctd_wif_ai_verdict_block**(wif ai block verdict verdict counter), 
-**ctd_wif_ai_verdict_alert**(wif ai alert verdict counter), 
-**ctd_wif_ai_verdict_allow**(wif ai allow verdict counter), 
-**ctd_wif_ai_verdict**(wif ai verdict counter).
+## 📤 Forwarding Errors
 
-### Sessions and verdicts: 
-Confirming status of a session and individual payloads with the following CLI command: 
-``` 
-	admin@PA-VM> debug dataplane show ctd feature-forward forward-info session-id
-``` 
-Note: Each session forward to AIRS may contain up to 4 payload types. Each will contain a specific verdict most significant verdict will apply to the full session. Verify status of log as benign or malicious. Check the following counters referent to the Payload type decoder: 
-**ctd_ai_wif_forward_count**: Total AI SEC forwarding (Note: each payload-type has one forward), 
-**ctd_ai_wif_forward_count_http**: Valid AI SEC forward Count for http, 
-**ctd_ai_wif_forward_count_http2**: Valid AI SEC forward Count for http2, 
-**ctd_wif_ai_verdict_allow**: allow verdict received, 
-**ctd_wif_ai_verdict_alert**: alert verdict received, 
-**ctd_wif_ai_verdict_block**: block verdict received, 
-**ctd_wif_ai_log_error**: Fail to generate ai log, 
-**ctd_wif_ai_max_latency_timeout**: reach ai max latency timeout, 
-**ctd_wif_ai_verdict_err_cfg_mismatch**: ai profile configuration mismach, 
-**ctd_wif_ai_verdict_err_others**: ai verdict errors 
+If AI security logs are not forwarding correctly, verify:
 
-### Replaying PCAPs and Verdict validation: 
-This is for lab replications with the PCAPs and Verdict validation. Note: please turn on "force-mirror" for the ai-security profile to play the pcap files. Set the CLI commands: 
+- **Platform Type & License** – Only AI-NGFW supports AI SEC  
+- **Security Policy** – Ensure AI Security Profile is configured and attached to a policy  
+- **FileManager Connection & Counters** – Look for `fctrl not ready counter`  
+- **WiFClient Connection**  
+- **Content Updates** – Ensure they are current  
+- **Session Traversal** – Confirm the AI security session is passing through the device  
+
+Run the following command to check forwarding counters:
 ```
-	admin@PA-VM> set profiles ai-security <ai-sec-profile-name> request-forwarding-mode force-mirror
-	admin@PA-VM> set profiles ai-security <ai-sec-profile-name> response-forwarding-mode force-mirror
-``` 
+admin@PA-VM> show counter global filter delta yes
+```
+And check for the following counters:  
+
+- **ctd_ai_wif_forward_count** → Total AI requests forwarded for WIF  
+- **ctd_ai_wif_forward_count_http** → Total AI requests forwarded for WIF for HTTP  
+- **ctd_ai_wif_forward_count_http2** → Total AI requests forwarded for WIF for HTTP2  
+- **ctd_wif_ai_verdict_block** → WIF AI block verdict counter  
+- **ctd_wif_ai_verdict_alert** → WIF AI alert verdict counter  
+- **ctd_wif_ai_verdict_allow** → WIF AI allow verdict counter  
+- **ctd_wif_ai_verdict** → WIF AI verdict counter  
+
+---
+
+## 🔍 Sessions and Verdicts
+
+To confirm the status of a session and individual payloads, use the following CLI command:
+```
+admin@PA-VM> debug dataplane show ctd feature-forward forward-info session-id
+```
+
+📌 **Note:** Each session forwarded to **AIRS** may contain up to **four payload types**.  
+- Each payload type will have a specific verdict.  
+- The **most significant verdict** will apply to the **full session**.  
+- Verify the log status as **benign** or **malicious**.  
+
+### Key Counters:
+
+- **ctd_ai_wif_forward_count** → Total AI SEC forwarding (one per payload type)  
+- **ctd_ai_wif_forward_count_http** → Valid AI SEC forward count for HTTP  
+- **ctd_ai_wif_forward_count_http2** → Valid AI SEC forward count for HTTP2  
+- **ctd_wif_ai_verdict_allow** → Allow verdict received  
+- **ctd_wif_ai_verdict_alert** → Alert verdict received  
+- **ctd_wif_ai_verdict_block** → Block verdict received  
+- **ctd_wif_ai_log_error** → Failed to generate AI log  
+- **ctd_wif_ai_max_latency_timeout** → AI max latency timeout reached  
+- **ctd_wif_ai_verdict_err_cfg_mismatch** → AI profile configuration mismatch  
+- **ctd_wif_ai_verdict_err_others** → Other AI verdict errors  
+
+---
+
+## 🔄 Replaying PCAPs & Verdict Validation
+
+This section is for **lab replications** using PCAPs for **verdict validation**.  
+📌 **Note:** Ensure "force-mirror" mode is enabled in the AI Security Profile before replaying PCAP files.
+
+To enable **force-mirror** mode, use:
+```
+admin@PA-VM> set profiles ai-security <ai-sec-profile-name> request-forwarding-mode force-mirror
+admin@PA-VM> set profiles ai-security <ai-sec-profile-name> response-forwarding-mode force-mirror
+```
+
 After this, check the following counter, as below CLI command:
 After tcpreplay, check the wif counters with the following CLI command:
 ```
