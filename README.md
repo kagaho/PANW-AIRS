@@ -1,17 +1,35 @@
-REFERENCE: https://confluence-dc.paloaltonetworks.com/pages/viewpage.action?pageId=295188409
-# Strata Playbook: AIRS (AI Runtime Security) - Playbook Hub - Confluence Datacenter
+# Strata Playbook: AIRS (AI Runtime Security) - Playbook Hub
 
-## Troubleshooting
-For troubleshooting AI Runtime Security, check the following scenarios:
+📌 **Reference:** [AIRS Playbook - Confluence Datacenter](https://confluence-dc.paloaltonetworks.com/pages/viewpage.action?pageId=295188409)
 
-### Deployment & Terraform Playbook: 
-For issues with Terraform deployments, check the AIRS (AI Runtime Security) Terraform Support playbook. 
+---
 
-### Licenses: 
-Supported license types: BYOL, PayGo, NEW AI-BYOL, NEW AI-PayGo. Verify License type with the CLI command: 
-``` 
-	admin@PA-VM> request license info
-``` 
+## 🔍 Troubleshooting AI Runtime Security (AIRS)
+
+Follow these troubleshooting steps to diagnose and resolve issues with AI Runtime Security (AIRS).
+
+---
+
+## 🚀 Deployment & Terraform Playbook
+
+If you encounter issues with **Terraform deployments**, refer to the **AIRS Terraform Support Playbook** for guidance.
+
+---
+
+## 🔑 License Verification
+
+AIRS supports the following license types:
+
+- **BYOL**
+- **PayGo**
+- **NEW AI-BYOL**
+- **NEW AI-PayGo**
+
+To verify the license type, use the following CLI command:
+
+```
+admin@PA-VM> request license info
+```
 Look for "Feature: AI-Runtime-Security"
 
 ### Status and Policy configuration in SCM: 
