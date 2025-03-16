@@ -38,7 +38,9 @@ Confirm platform type & License(Only licensed AI-NGFW support AI SEC); Verify Po
 and check for the following counters: ctd_ai_wif_forward_count(total ai requests forwarded for WIF), *ctd_ai_wif_forward_count_http*(total ai requests forwarded for WIF for http), *ctd_ai_wif_forward_count_http2*(total ai requests forwarded for WIF for http2), *ctd_wif_ai_verdict_block*(wif ai block verdict verdict counter), *ctd_wif_ai_verdict_alert*(wif ai alert verdict counter), *ctd_wif_ai_verdict_allow*(wif ai allow verdict counter), *ctd_wif_ai_verdict*(wif ai verdict counter).
 ### Sessions and verdicts: 
 Confirming status of a session and individual payloads with the following CLI command: 
-``` admin@PA-VM> debug dataplane show ctd feature-forward forward-info session-id``` 
+``` 
+	admin@PA-VM> debug dataplane show ctd feature-forward forward-info session-id
+``` 
 Note: Each session forward to AIRS may contain up to 4 payload types. Each will contain a specific verdict most significant verdict will apply to the full session. Verify status of log as benign or malicious. Check the following counters referent to the Payload type decoder: *ctd_ai_wif_forward_count*: Total AI SEC forwarding (Note: each payload-type has one forward), *ctd_ai_wif_forward_count_http*: Valid AI SEC forward Count for http, *ctd_ai_wif_forward_count_http2*: Valid AI SEC forward Count for http2, *ctd_wif_ai_verdict_allow*: allow verdict received, *ctd_wif_ai_verdict_alert*: alert verdict received, *ctd_wif_ai_verdict_block*: block verdict received, *ctd_wif_ai_log_error*: Fail to generate ai log, *ctd_wif_ai_max_latency_timeout*: reach ai max latency timeout, *ctd_wif_ai_verdict_err_cfg_mismatch*: ai profile configuration mismach, *ctd_wif_ai_verdict_err_others*: ai verdict errors 
 ### Replaying PCAPs and Verdict validation: 
 This is for lab replications with the PCAPs and Verdict validation. Note: please turn on "force-mirror" for the ai-security profile to play the pcap files. Set the CLI commands: 
