@@ -1,14 +1,3 @@
-## Study links
-
-https://doc.dpdk.org/guides-23.11/platform/mlx5.html
-https://www.paloaltonetworks.com/blog/2026/01/support-nvidia-enterprise-ai-factory/?utm_source=linkedin&utm_medium=social&utm_campaign=na&utm_content=pa000730
-https://www.paloaltonetworks.com/blog/2025/10/secure-ai-factory-palo-alto-networks-nvidia/
-https://www.paloaltonetworks.com/blog/network-security/prisma-airs-on-nvidia-bluefield-secures-the-industrial-edge/
-https://www.paloaltonetworks.com/blog/2025/10/secure-ai-factory-palo-alto-networks-nvidia/
-https://docs.paloaltonetworks.com/vm-series/10-2/vm-series-deployment/set-up-the-vm-series-firewall-on-kvm/intelligent-traffic-offload
-
-
-
 ***Prisma AIRS and NVIDIA BlueField Integration: Practical Implications***
 
 The integration of Palo Alto Networks' Prisma AIRS (AI Runtime Security) with NVIDIA BlueField Data Processing Units (DPUs) offers significant practical benefits, particularly in enhancing security performance and efficiency for AI workloads and general network traffic in data centers and at the industrial edge. This synergy primarily leverages the Intelligent Traffic Offload (ITO) service to offload and accelerate security processing.
@@ -73,5 +62,21 @@ This integration aims to improve the performance and throughput of the VM-Series
         • This decision considers factors like whether the traffic can benefit from security inspection (e.g., encrypted traffic cannot be inspected by the firewall for content) or if it's explicitly allowed by policy to bypass deep inspection.
         
     3. Traffic Offload to DPU: If the traffic is deemed suitable for offload, the NVIDIA BlueField-2 DPU handles the subsequent packets of that flow. This offloading accelerates packet filtering and forwarding, significantly reducing the load on the VM-Series firewall's CPU. [2]
+
+
+
+
+
+
+## Study links
+
+https://doc.dpdk.org/guides-23.11/platform/mlx5.html
+https://www.paloaltonetworks.com/blog/2026/01/support-nvidia-enterprise-ai-factory/?utm_source=linkedin&utm_medium=social&utm_campaign=na&utm_content=pa000730
+https://www.paloaltonetworks.com/blog/2025/10/secure-ai-factory-palo-alto-networks-nvidia/
+https://www.paloaltonetworks.com/blog/network-security/prisma-airs-on-nvidia-bluefield-secures-the-industrial-edge/
+https://www.paloaltonetworks.com/blog/2025/10/secure-ai-factory-palo-alto-networks-nvidia/
+https://docs.paloaltonetworks.com/vm-series/10-2/vm-series-deployment/set-up-the-vm-series-firewall-on-kvm/intelligent-traffic-offload
+
+
     
 
