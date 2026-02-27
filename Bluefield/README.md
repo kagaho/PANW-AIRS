@@ -1,3 +1,12 @@
+# BlueField DPU for Prisma AIRS
+
+A BlueField card typically has:
+
+  • A high-speed NIC (Ethernet or InfiniBand)  
+  • ARM cores (to run Linux and services)  
+  • Hardware accelerators (crypto/IPsec/TLS, regex, flow processing, virt switching, etc.)    
+
+
 ***Prisma AIRS and NVIDIA BlueField Integration: Practical Implications***
 
 The integration of Palo Alto Networks' Prisma AIRS (AI Runtime Security) with NVIDIA BlueField Data Processing Units (DPUs) offers significant practical benefits, particularly in enhancing security performance and efficiency for AI workloads and general network traffic in data centers and at the industrial edge. This synergy primarily leverages the Intelligent Traffic Offload (ITO) service to offload and accelerate security processing.
