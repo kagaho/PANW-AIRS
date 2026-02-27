@@ -17,7 +17,7 @@ The integration of Palo Alto Networks' Prisma AIRS (AI Runtime Security) with NV
 
 • **Enhanced Performance and Efficiency** 
 
-    • The integration combines Palo Alto Networks VM-Series Virtual Next-Generation Firewalls (NGFWs) with NVIDIA BlueField-2 DPUs.
+    • The integration combines Palo Alto Networks VM-Series Virtual Next-Generation Firewalls (NGFWs) with NVIDIA BlueField-2 and higher DPUs.
     
     • A core component is the Intelligent Traffic Offload (ITO) service, which inspects new traffic flows to determine if deep security inspection is required. If not, the traffic is offloaded to the DPU, freeing up the firewall's CPU.
     
@@ -85,15 +85,6 @@ https://www.paloaltonetworks.com/blog/2025/10/secure-ai-factory-palo-alto-networ
 https://www.paloaltonetworks.com/blog/network-security/prisma-airs-on-nvidia-bluefield-secures-the-industrial-edge/
 https://www.paloaltonetworks.com/blog/2025/10/secure-ai-factory-palo-alto-networks-nvidia/
 https://docs.paloaltonetworks.com/vm-series/10-2/vm-series-deployment/set-up-the-vm-series-firewall-on-kvm/intelligent-traffic-offload
-
-## internal
-https://confluence-dc.paloaltonetworks.com/spaces/cloudengineering/pages/94899837/Bringup+SW+Firewall+on+DPU+Nvidia+BlueField
-https://confluence-dc.paloaltonetworks.com/spaces/PAVMQA/pages/79334156/ITO+Host+Setup+with+Nvidia+BF+card
-https://confluence-dc.paloaltonetworks.com/spaces/cloudengineering/pages/77479914/Intelligent+Traffic+Offload+-+Layer+3+-+Functional+Spec
-https://confluence-dc.paloaltonetworks.com/spaces/1120/pages/87774930/FS+NAT+Offload+support+for+Intelligent+Traffic+Offload
-https://confluence-dc.paloaltonetworks.com/spaces/cloudengineering/pages/77479914/Intelligent+Traffic+Offload+-+Layer+3+-+Functional+Spec
-https://confluence-dc.paloaltonetworks.com/spaces/cloudengineering/pages/493555403/Containerized+HSF
-https://confluence-dc.paloaltonetworks.com/spaces/cloudengineering/pages/186320064/IPSec+Offload+using+DPU+-+Functional+Specification
 
 
 
